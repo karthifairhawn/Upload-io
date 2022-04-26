@@ -1,0 +1,19 @@
+on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: ftpupload.net
+        username: b15_28458435
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: ./upload.karthifairhawn.in/htdocs/
+        port: 21
+        
